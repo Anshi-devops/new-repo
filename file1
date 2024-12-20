@@ -1,1 +1,17 @@
-main branch
+pipeline {
+    agent any
+
+    stages {
+        stage('clone') {
+            steps {
+                git 'https://github.com/Pritam-Khergade/student-ui.git'
+            }
+        }
+        stage('image&build') {
+            steps {
+                sh 'sudo yum install maven -y && sudo mvn clean package' 
+            }    
+        }
+    }
+}
+
